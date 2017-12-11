@@ -594,7 +594,7 @@ def create
   @comment = @article.comments.create(comment_params)
   flash[:notice] = "Comment has been created!"
   redirect_to articles_path
-end
+ end
 
 private
   def comment_params
@@ -645,7 +645,7 @@ ownership for articles and comments within the engine.
 
 ### Mounting the Engine
 
-First, the engine needs to be specified inside the application's `Gemfile`. If
+First, the engine needs to be specified inside the application's `Gemfile` file. If
 there isn't an application handy to test this out in, generate one using the
 `rails new` command outside of the engine directory like this:
 
@@ -653,7 +653,7 @@ there isn't an application handy to test this out in, generate one using the
 $ rails new unicorn
 ```
 
-Usually, specifying the engine inside the `Gemfile` would be done by specifying it
+Usually, specifying the engine inside the `Gemfile` file would be done by specifying it
 as a normal, everyday gem.
 
 ```ruby
@@ -661,13 +661,17 @@ gem 'devise'
 ```
 
 However, because you are developing the `blorgh` engine on your local machine,
-you will need to specify the `:path` option in your `Gemfile`:
+you will need to do the following:
+
+- Create the 'engines' folder inside the 'unicorn' application
+- Copy the 'blorgh' folder inside the 'engines' folder you just created
+- Specify the `:path` option in your `Gemfile` file
 
 ```ruby
 gem 'blorgh', path: 'engines/blorgh'
 ```
 
-Then run `bundle` to install the gem.
+Then run `bundle install` to install the gem.
 
 As described earlier, by placing the gem in the `Gemfile` it will be loaded when
 Rails is loaded. It will first require `lib/blorgh.rb` from the engine, then
